@@ -14,12 +14,18 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Almond/vendor/GLFW/include"
+IncludeDir["Glad"] = "Almond/vendor/Glad/include"
+IncludeDir["ImGui"] = "Almond/vendor/imgui"
+
 include "Almond/vendor/GLFW"
+include "Almond/vendor/Glad"
+include "Almond/vendor/imgui"
 
 project "Almond"
 	location "Almond"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,46 +43,54 @@ project "Almond"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 	links 
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+	
 		systemversion "latest"
 
 		defines 
 		{
 			"AL_PLATFORM_WINDOWS",
-			"AL_BUILD_DLL"
+			"AL_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "AL_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "AL_RELEASE"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "AL_DIST"
+		runtime "Release"
 		optimize "On"
 
 	project "Sandbox"
 		location "Sandbox"
 		kind "ConsoleApp"
-
+		staticruntime "off"
 		language "C++"
 
 		targetdir("bin/" .. outputdir .. "/%{prj.name}")
@@ -100,12 +114,12 @@ project "Almond"
 
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			
 			systemversion "latest"
 
 		defines 
 		{
-			"AL_PLATFORM_WINDOWS",
+			"AL_PLATFORM_WINDOWS"
 			
 		}
 
@@ -113,12 +127,15 @@ project "Almond"
 
 		filter "configurations:Debug"
 			defines "AL_DEBUG"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "AL_RELEASE"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "AL_DIST"
+			runtime "Release"
 			optimize "On"

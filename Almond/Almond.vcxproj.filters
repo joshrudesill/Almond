@@ -7,11 +7,17 @@
     <Filter Include="Almond\Events">
       <UniqueIdentifier>{04A07BE6-7060-F71C-399B-409AA51A3CF9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Almond\Platform">
-      <UniqueIdentifier>{74B80190-E043-6F54-E954-F248555FCB54}</UniqueIdentifier>
+    <Filter Include="Almond\ImGui">
+      <UniqueIdentifier>{4A65104D-36C8-9FF1-DF4D-D8A7CB8F6B74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Almond\Platform\Windows">
-      <UniqueIdentifier>{AE96AAC0-1ACE-F257-23D8-567B8F8E1951}</UniqueIdentifier>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,14 +43,26 @@
     <ClInclude Include="src\Almond\Events\MouseEvent.h">
       <Filter>Almond\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Almond\ImGui\ImGuiLayer.h">
+      <Filter>Almond\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Almond\Layer.h">
+      <Filter>Almond</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Almond\LayerStack.h">
+      <Filter>Almond</Filter>
+    </ClInclude>
     <ClInclude Include="src\Almond\Log.h">
       <Filter>Almond</Filter>
     </ClInclude>
-    <ClInclude Include="src\Almond\Platform\Windows\WindowsWindow.h">
-      <Filter>Almond\Platform\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="src\Almond\Window.h">
       <Filter>Almond</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\hzpch.h" />
   </ItemGroup>
@@ -52,11 +70,23 @@
     <ClCompile Include="src\Almond\Application.cpp">
       <Filter>Almond</Filter>
     </ClCompile>
+    <ClCompile Include="src\Almond\ImGui\ImGuiLayer.cpp">
+      <Filter>Almond\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Almond\Layer.cpp">
+      <Filter>Almond</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Almond\LayerStack.cpp">
+      <Filter>Almond</Filter>
+    </ClCompile>
     <ClCompile Include="src\Almond\Log.cpp">
       <Filter>Almond</Filter>
     </ClCompile>
-    <ClCompile Include="src\Almond\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Almond\Platform\Windows</Filter>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\hzpch.cpp" />
   </ItemGroup>
