@@ -11,12 +11,15 @@ public:
 
 	void onUpdate() override
 	{
+		if (Almond::Input::isKeyPressed(AL_KEY_TAB))
+			AL_INFO("Tab Pressed");
+
 		AL_INFO("ExampleLayer::Update");
 	}
 
 	void onEvent(Almond::Event& event) override
 	{
-		AL_TRACE("{0}", event);
+		//AL_TRACE("{0}", event);
 	}
 };
 

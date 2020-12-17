@@ -157,12 +157,16 @@
     <ClInclude Include="src\Almond\Events\Event.h" />
     <ClInclude Include="src\Almond\Events\KeyEvent.h" />
     <ClInclude Include="src\Almond\Events\MouseEvent.h" />
+    <ClInclude Include="src\Almond\KeyCodes.h" />
+    <ClInclude Include="src\Almond\Input.h" />
     <ClInclude Include="src\Almond\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Almond\Layer.h" />
     <ClInclude Include="src\Almond\LayerStack.h" />
     <ClInclude Include="src\Almond\Log.h" />
+    <ClInclude Include="src\Almond\MouseButtonCodes.h" />
     <ClInclude Include="src\Almond\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\hzpch.h" />
   </ItemGroup>
@@ -173,6 +177,7 @@
     <ClCompile Include="src\Almond\LayerStack.cpp" />
     <ClCompile Include="src\Almond\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\hzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

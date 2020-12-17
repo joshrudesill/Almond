@@ -3,6 +3,7 @@
 
 #include "Almond/Log.h"
 #include "glad/glad.h"
+#include "Input.h"
 
 namespace Almond {
 
@@ -20,7 +21,6 @@ namespace Almond {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(onWindowClose));
-		AL_CORE_INFO("{0}", e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -56,6 +56,10 @@ namespace Almond {
 			glClear(GL_COLOR_BUFFER_BIT);
 			for (Layer* layer : m_LayerStack)
 				layer->onUpdate();
+
+			auto [x, y] = Input::getMousePosition();
+
+			
 			m_Window->onUpdate();
 		}
 	}
