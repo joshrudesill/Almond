@@ -12,8 +12,8 @@ namespace Almond {
 	public:
 		static void Init();
 
-		inline static std::shared_ptr<spdlog::logger>& getCoreLogger();
-		inline static std::shared_ptr<spdlog::logger>& getClientLogger();
+		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_CoreLogger; }
+		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_ClientLogger; }
 
 	private:
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
@@ -36,4 +36,4 @@ namespace Almond {
 #define AL_WARN(...)		::Almond::Log::getClientLogger()->warn(__VA_ARGS__)
 #define AL_INFO(...)		::Almond::Log::getClientLogger()->info(__VA_ARGS__)
 #define AL_TRACE(...)		::Almond::Log::getClientLogger()->trace(__VA_ARGS__)
-#define AL_FATAL(...)		::Almond::Log::getClientLogger()->critical(__VA_ARGS__)
+#define AL_FATAL(...)		::Almond::Log::getClientLogger()->critical(__VA_ARGS__) 

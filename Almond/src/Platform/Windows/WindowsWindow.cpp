@@ -4,8 +4,8 @@
 #include "Almond/Events/Event.h"
 #include "Almond/Events/KeyEvent.h"
 #include "Almond/Events/MouseEvent.h"
-#include "glad/glad.h"
 
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Almond {
 
@@ -38,6 +38,8 @@ namespace Almond {
 
 		AL_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
+		
+
 		if (!s_GLFWInitialized)
 		{
 			int success = glfwInit();
@@ -47,9 +49,11 @@ namespace Almond {
 
 		}
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		AL_CORE_ASSERT(status, "Failed to initialize Glad.");
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->init();
+
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		setVSync(true);
 
@@ -148,7 +152,8 @@ namespace Almond {
 	void WindowsWindow::onUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->swapBuffers();
+		
 	}
 	void WindowsWindow::setVSync(bool enabled)
 	{ 

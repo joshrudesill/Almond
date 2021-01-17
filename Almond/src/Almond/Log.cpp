@@ -18,8 +18,6 @@ namespace Almond {
 		s_ClientLogger->set_level(spdlog::level::trace);
 	}
 
-	inline std::shared_ptr<spdlog::logger>& Log::getCoreLogger() { return Log::s_CoreLogger; }
 
-	inline std::shared_ptr<spdlog::logger>& Log::getClientLogger() { return Log::s_ClientLogger; }
 }
 

@@ -1,4 +1,6 @@
 #include <Almond.h>
+#include "imgui/imgui.h"
+
 
 
 
@@ -7,14 +9,17 @@ class ExampleLayer : public Almond::Layer
 public:
 	ExampleLayer()
 		:Layer("Example")
-	{}
+	{
+		
+	}
 
 	void onUpdate() override
 	{
-		if (Almond::Input::isKeyPressed(AL_KEY_TAB))
-			AL_INFO("Tab Pressed");
-
-		AL_INFO("ExampleLayer::Update");
+		
+	}
+	virtual void onImGuiRender() 
+	{
+	
 	}
 
 	void onEvent(Almond::Event& event) override
@@ -30,7 +35,7 @@ public:
 	Sandbox()
 	{
 		pushLayer(new ExampleLayer());
-		pushOverlay(new Almond::ImGuiLayer());
+		
 	}
 	~Sandbox()
 	{

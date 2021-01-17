@@ -1,7 +1,7 @@
 #pragma once
 #include "Almond/Window.h"
 #include <GLFW/glfw3.h>
-
+#include "Almond/Renderer/GraphicsContext.h"
 
 namespace Almond {
 	
@@ -24,7 +24,7 @@ namespace Almond {
 		virtual void shutdown();
 	private:
 		GLFWwindow* m_Window;
-
+		GraphicsContext* m_Context;
 		struct WindowData
 		{
 			std::string Title;

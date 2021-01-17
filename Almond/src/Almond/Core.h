@@ -1,14 +1,18 @@
 #pragma once
 
 #ifdef AL_PLATFORM_WINDOWS
-	#ifdef AL_BUILD_DLL
-		#define ALMOND_API __declspec(dllexport)
-	#else 
-		#define ALMOND_API __declspec(dllimport)
-	#endif
+#if AL_DYNAMIC_LINK
+#ifdef AL_BUILD_DLL
+#define ALMOND_API __declspec(dllexport)
 #else
-	#error Almond is windows only
-#endif // 
+#define ALMOND_API __declspec(dllimport)
+#endif
+#else
+#define ALMOND_API
+#endif
+#else
+#error ALMOND only supports Windows!
+#endif
 
 
 #ifdef AL_DEBUG
