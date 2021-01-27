@@ -1,17 +1,25 @@
 #pragma once
+#include "RenderCommand.h"
+#include "Almond/Renderer/OrthographicCamera.h"
+#include "Shader.h"
+
 namespace Almond {
 
-	enum class RendererAPI
-	{
-		None = 0, OpenGL = 1
-	};
 
 	class Renderer
 	{
 	public:
-		inline static RendererAPI getAPI() { return s_RendererAPI; }
+		static void beginScene(OrthographicCamera& camera);
+		static void endScene();
+		static void submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4 transform = glm::mat4(1.0f));
+
+		inline static RendererAPI::API getAPI() { return RendererAPI::getAPI(); }
 	private:
-		static RendererAPI s_RendererAPI;
+		struct SceneData
+		{
+			glm::mat4 viewProjectionMatrix;
+		};
+		static SceneData* m_SceneData;
 	};
 	
 }

@@ -8,8 +8,8 @@ namespace Almond {
 	{
 		switch (Renderer::getAPI())
 		{
-			case RendererAPI::None:		AL_CORE_ASSERT(false, "RendererAPI::None is not supported."); return nullptr;
-			case RendererAPI::OpenGL:	return new OpenGLVertexArray();
+			case RendererAPI::API::None:		AL_CORE_ASSERT(false, "RendererAPI::None is not supported."); return nullptr;
+			case RendererAPI::API::OpenGL:	return new OpenGLVertexArray();
 		}
 		AL_CORE_ASSERT(false, "Unknown renderer API.");
 		return nullptr;

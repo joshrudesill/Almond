@@ -10,6 +10,8 @@
 #include "Almond/Renderer/Shader.h"
 #include "Almond/Renderer/Buffer.h"
 #include "Almond/Renderer/VertexArray.h"
+#include "Almond/Renderer/OrthographicCamera.h"
+#include "Almond/Core/Timestep.h"
 
 namespace Almond {
 
@@ -26,6 +28,19 @@ namespace Almond {
 		inline Window& getWindow() { return *m_Window; }
 		inline static Application& get() { return *s_Instance; }
 		
+		void updateFrameCount(Timestep ts) {
+			frameTotal += ts.getSeconds();
+			frames++;
+
+			if (frames % 1000 == 0) {
+				frames = 0;
+				frameTotal = 0.0f;
+			}
+				
+		
+			
+			AvgFrameRate = 1.0f / (frameTotal / frames);
+		}
 
 	private:
 		bool onWindowClose(WindowCloseEvent& e);
@@ -33,12 +48,10 @@ namespace Almond {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		
-		std::shared_ptr<Shader> m_Shader;
-	
-		std::shared_ptr<VertexArray> m_VertexArray;
-
+		float m_LastTime = 0.0f;
+		int frames = 0;
+		float frameTotal = 0.0f;
+		float AvgFrameRate = 0.0f;
 
 
 	private:

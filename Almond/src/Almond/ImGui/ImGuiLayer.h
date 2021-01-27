@@ -15,7 +15,7 @@ namespace Almond {
 
 		virtual void onAttach() override;
 		virtual void onDetach() override;
-		virtual void onImGuiRender() override;
+		virtual void onImGuiRender(float fr) override;
 		void begin();
 		void end();
 		

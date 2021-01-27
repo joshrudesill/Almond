@@ -9,8 +9,8 @@ namespace Almond {
 	{
 		switch (Renderer::getAPI())
 		{
-		case RendererAPI::None:		AL_CORE_ASSERT(false, "RendererAPI::None is not supported."); return nullptr;
-		case RendererAPI::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
+		case RendererAPI::API::None:		AL_CORE_ASSERT(false, "RendererAPI::None is not supported."); return nullptr;
+		case RendererAPI::API::OpenGL:	return new OpenGLVertexBuffer(vertices, size);
 		}
 		AL_CORE_ASSERT(false, "Unknown renderer API.");
 		return nullptr;
@@ -22,8 +22,8 @@ namespace Almond {
 	{
 		switch (Renderer::getAPI())
 		{
-		case RendererAPI::None:		AL_CORE_ASSERT(false, "RendererAPI::None is not supported."); return nullptr;
-		case RendererAPI::OpenGL:	return new OpenGLIndexBuffer(indices, count);
+		case RendererAPI::API::None:		AL_CORE_ASSERT(false, "RendererAPI::None is not supported."); return nullptr;
+		case RendererAPI::API::OpenGL:	return new OpenGLIndexBuffer(indices, count);
 		}
 		AL_CORE_ASSERT(false, "Unknown renderer API.");
 		return nullptr;

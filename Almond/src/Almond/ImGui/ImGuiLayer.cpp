@@ -68,10 +68,9 @@ namespace Almond {
 		ImGui::DestroyContext();
 	}
 
-	void ImGuiLayer::onImGuiRender()
+	void ImGuiLayer::onImGuiRender(float fr)
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+
 	}
 
 	void ImGuiLayer::begin()

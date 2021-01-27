@@ -5,13 +5,12 @@ namespace Almond {
 	class Shader 
 	{
 	public:
-		Shader(const std::string& vertexSrc, const std::string& fragementSrc);
-		~Shader();
+		
+		virtual ~Shader() = default;
 
-		void bind() const;
-		void unbind() const;
+		virtual void bind() const = 0;
+		virtual void unbind() const = 0;
 
-	private:
-		uint32_t m_RendererID;
+		static Shader* create(const std::string& vertexSrc, const std::string& fragementSrc);
 	};
 }

@@ -43,7 +43,7 @@ namespace Almond {
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::addVertexBuffer(const std::shared_ptr<VertexBuffer>& buffer)
+	void OpenGLVertexArray::addVertexBuffer(const Ref<VertexBuffer>& buffer)
 	{
 		AL_CORE_ASSERT(buffer->getLayout().getElements().size(), "Vertex buffer has no elements");
 		glBindVertexArray(m_RendererID);
@@ -62,7 +62,7 @@ namespace Almond {
 		m_VertexBuffers.push_back(buffer);
 	}
 
-	void OpenGLVertexArray::setIndexBuffer(const std::shared_ptr<IndexBuffer>& buffer)
+	void OpenGLVertexArray::setIndexBuffer(const Ref<IndexBuffer>& buffer)
 	{
 		glBindVertexArray(m_RendererID);
 		buffer->bind();
